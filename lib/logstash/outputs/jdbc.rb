@@ -293,7 +293,7 @@ class LogStash::Outputs::Jdbc < LogStash::Outputs::Base
         #
         # strftime appears to be the most reliable across drivers.
         statement.setString(idx + 1, value.time.strftime(STRFTIME_FMT))
-      when Fixnum, Integer
+      when Integer
         if value > 2147483647 or value < -2147483648
           statement.setLong(idx + 1, value)
         else
